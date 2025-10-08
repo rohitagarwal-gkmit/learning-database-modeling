@@ -18,10 +18,13 @@ erDiagram
     Library }|--|{ library_person : has
     Person }|--|{ library_person : is_associated_with
 
+    Subscription_Model ||--o{ Person : defines
+
     Person {
         bigint id PK
         string name
         string email
+        int sub_id FK
     }
 
     Roles {
@@ -75,4 +78,10 @@ erDiagram
         datetime issue_date
         int book_id FK
         datetime return_due_date
+    }
+
+    Subscription_Model {
+        int id PK
+        varchar name
+        int allowed_limit
     }
