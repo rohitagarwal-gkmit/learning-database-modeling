@@ -24,6 +24,7 @@ erDiagram
         bigint id PK
         string name
         string email
+        int address_id FK
         int sub_id FK
     }
 
@@ -69,6 +70,7 @@ erDiagram
         int Library_ID FK
         date Published_Date
         float Book_Rating
+        enum book_status
     }
 
     Issue_Records {
@@ -84,4 +86,5 @@ erDiagram
         int id PK
         varchar name
         int allowed_limit
+        int cost
     }
