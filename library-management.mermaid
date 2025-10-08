@@ -1,0 +1,78 @@
+erDiagram
+
+    Person ||--|| Address : lives_at
+
+    Library ||--|| Address : located_at
+
+    Library ||--o{ Book : includes
+
+    Person ||--o{ Issue_Records : is_issuer_for
+
+    Person ||--o{ Issue_Records : is_borrower_for
+
+    Book ||--o{ Issue_Records : logged_in
+
+    Person }|--|{ person_role : has
+    Roles }|--|{ person_role : applies_to
+
+    Library }|--|{ library_person : has
+    Person }|--|{ library_person : is_associated_with
+
+    Person {
+        bigint id PK
+        string name
+        string email
+    }
+
+    Roles {
+        bigint id PK
+        string role_type
+    }
+
+    Address {
+        bigint id PK
+        string address_line_1
+        string address_line_2
+        string city
+        string state
+        string zip_code
+        varchar phone_number
+        float latitude
+        float longitude
+    }
+
+    Library {
+        int id PK
+        varchar name
+        bigint address_id FK
+    }
+
+    library_person {
+        int library_id FK
+        int person_id FK
+    }
+
+    person_role {
+        int role_id FK
+        int person_id FK
+    }
+
+    Book {
+        int ID PK
+        varchar Title
+        varchar Author
+        varchar ISBN
+        varchar Genre
+        int Library_ID FK
+        date Published_Date
+        float Book_Rating
+    }
+
+    Issue_Records {
+        int ID PK
+        bigint issued_by FK 
+        bigint borrowed_by FK
+        datetime issue_date
+        int book_id FK
+        datetime return_due_date
+    }
